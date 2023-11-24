@@ -1,0 +1,69 @@
+h1{
+    text-align: center;
+    color: rgb(27, 220, 69);
+}
+
+fieldset{
+    margin: 0 auto;
+    background-color: #eee;
+    text-align: center;
+}
+.contain{
+    width: 800px;
+    margin: 5px auto;
+    text-align: center;
+}
+
+input{
+    width: 75%;
+    display: block;
+    margin: 3px auto;
+    padding: 5px;
+}
+
+.radio{
+    position: relative;
+    display: flex;
+    width: 15px;
+    margin: 5px;
+    left: 100px;
+}
+
+input[type='radio']{
+    border-radius: 50%;
+    padding: 0px;
+    margin: 0px;
+}
+input[type='radio']:hover{
+    box-shadow: none;
+}
+::placeholder{
+    font-size: 15px;
+    color: black;
+}
+
+input:hover{
+    box-shadow: 1px 0px 5px 1px black;
+    cursor: pointer;
+}
+
+input[type='submit']{
+    width: 203px;
+    background-color: #ede509df;
+    padding: 1px;
+    margin-top: 20px;
+    transition: all 0.2s;
+}
+
+input[type='submit']:hover{
+    box-shadow: 1px 1px 5px 3px black;
+    cursor: pointer;
+    width: 204px;
+    font-size: 15px;
+
+}
+
+label{
+    color: blueviolet;
+    font-size: 17px;
+}
