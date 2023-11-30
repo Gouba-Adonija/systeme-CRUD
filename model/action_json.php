@@ -13,6 +13,7 @@ if(isset($_POST['id'])){
     <link rel="stylesheet" href="..\creation.css">
     <fieldset>
     <legend><h1>Page de Modification</h1></legend>
+    <?=$data->phone?>
     <form enctype="multipart/form-data" method="get" action="update.php">
         <label for="name">Nom</label>
         <input type="text" id="name" name="name" style="text-transform:uppercase" maxlength="10" required value="<?=$data->name?>"> 
@@ -71,7 +72,7 @@ if(isset($_POST['id'])){
         ?>
         <link rel="stylesheet" href="..\creation.css">
         <fieldset>
-        <legend><h1>Page de Modification sql</h1></legend>
+        <legend><h1>Page de Modification</h1></legend>
         <form enctype="multipart/form-data" method="get" action="update_b.php">
             <label for="name">Nom</label>
             <input type="text" id="name" name="name" style="text-transform:uppercase" maxlength="10" required value="<?=$users['nom']?>"> 
@@ -105,32 +106,56 @@ if(isset($_POST['id'])){
     }elseif($action == 'View'){
         require 'functions\sql_functions.php';
         $user = ReadUser($ident);
-        ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Extension</th>
-                    <th>Name</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Website</th>  
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="images\<?=$user['img'] ?>" alt="photo de profil" width="85px"> </td>
-                    <td><?=$user['nom']?></td>
-                    <td><?=$user['alias']?></td>
-                    <td><?=$user['email']?></td>
-                    <td><?=$user['phone']?></td>
-                    <td><?=$user['sit']?></td>
-                    
 
-                </tr>
-            </tbody>
-        </table>
+        ?>
+        <style>
+            .container{
+                display: flex;
+                background-color: rgba(13,100,45,0.5);
+                padding: 20px;
+            }
+            .left{
+                margin-right: 10%;
+            }
+            #nom{
+                font-size: 60px;
+                margin: 0;
+            }
+            p{
+                font-size: 20px;
+            }
+            .right{
+                display: flex;
+                padding: 10px;
+            }
+            img{
+                box-shadow: 1px 1px 1px solid black
+            }
+            .two{
+                margin-left: 100px;
+            }
+            a{
+                text-decoration: none;
+            }
+        </style>
+        <div class="container">
+            <div class="left">
+                <img src="images\<?=$user['img'] ?>" alt="photo de profil" width="200px">
+            </div>
+            <div class="right">
+                <div class="one">
+                    <p id="nom"><strong><?=$user['nom']?></strong></p>
+                    <p><strong><?=$user['alias']?></strong></p>
+                    <p><?=$user['email']?></p>
+                </div>
+                <div class="two">
+                    <p><a href="tel:<?=$user['phone']?>"><?=$user['phone']?></a> </p>
+                    <p> <a href=""><?=$user['sit']?></a></p>    
+                </div>
+            </div>
+        </div>
         <?php
+        exit;
 
     }elseif($action == 'Delete'){
         require 'functions\sql_functions.php';

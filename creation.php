@@ -105,7 +105,7 @@ require 'model\functions\functions.php';
             <input type="number" id="phone" name="tel" maxlength="10" minlength="10" value="
             <?php
                 if(!empty($_POST['tel'])){
-                    echo $_POST['tel'];
+                    echo '0'.$_POST['tel'];
                 }
             ?>
             "required>
