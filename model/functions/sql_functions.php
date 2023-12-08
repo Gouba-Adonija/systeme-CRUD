@@ -56,21 +56,29 @@ function ReadUser($id){
     return $result[0];
 }
 
-function UpdateUser($champ,$valeur,$id){
+function UpdateUser($nom, $pren, $email, $site,$tel ,$id){
     try{
         $conn = getConnBd();
         $conn->beginTransaction();
-        $sql="UPDATE users SET $champ = '$valeur' WHERE id_u=$id";
-        $stmt = $conn->query("$sql");
-        $stmt->bindParam(':nom',$valeur);
+        $sql="UPDATE users SET nom = :nom, alias = : alias, email = :email,
+        phone = :phone, sit = :sit, img = :img WHERE id_u=$id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':nom',$nom);
+        $stmt->bindParam(':alias',$pren);
+        $stmt->bindParam(':email',$email);
+        $stmt->bindParam(':phone',$tel);
+        $stmt->bindParam(':sit',$site);
+
+        $test = $stmt->execute();
         $conn->commit();
     
         return true;
     }catch(PDOException $e){
-        $conn->rollBack();
+        return $conn->rollBack();
         exit;
-    }         
+    } 
 }
+
 
 function DeleteUser($id){
     try{

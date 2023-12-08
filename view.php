@@ -1,12 +1,3 @@
-<?php
-$file='user_data.json';
-$datas=file_get_contents($file);
-$datas=json_decode($datas);
-foreach($datas as $data){
-    if($data -> id == $id){
-        // if(isset($data -> extension)){
-?>
-
 <style>
     .container{
         display: flex;
@@ -37,6 +28,15 @@ foreach($datas as $data){
         text-decoration: none;
     }
 </style>
+
+<?php
+$file='user_data.json';
+$datas=file_get_contents($file);
+$datas=json_decode($datas);
+foreach($datas as $data){
+    if($data -> id == $id){
+        // if(isset($data -> extension)){
+?>
     <div class="container">
             <div class="left">
                 <img src="images\<?=$data -> extension?>" alt="photo de profil" width="200px">

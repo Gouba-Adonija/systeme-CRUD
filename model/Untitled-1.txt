@@ -1,0 +1,27 @@
+<label for="name">Nom</label>
+        <input type="text" id="name" name="name" style="text-transform:uppercase" maxlength="10" required value="<?=$nom?>"
+        <?= isset($_SESSION['erreur']['1']) ? "placeholder='".$_SESSION['erreur']['1']."'" : "" ?> > 
+        
+        <label for="Surname">Prénom</label>
+        <input type="text" id="surname" name="surname" style="text-transform:capitalize" value="<?=$pren?>" required
+        <?php echo isset($_SESSION['erreur']['2']) ? "placeholder='".$_SESSION['erreur']['2']."'" : "" ?> > 
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="<?=$email?>" required
+        <?php echo isset($_SESSION['erreur']['3']) ? "placeholder='".$_SESSION['erreur']['3']."'" : "" ?> >
+        
+        <label for="site">Votre site</label>
+        <input type="url" id="site" name="site" value="<?=$site?>" required
+        <?php echo isset($_SESSION['erreur']['4']) ? "placeholder='".$_SESSION['erreur']['4']."'" : "" ?> >
+        
+        <label for="phone">Télephone</label>
+        <input type="number" id="phone" name="tel" maxlength="10" minlength="10" value="<?=$tel?>" required
+        <?php echo isset($_SESSION['erreur']['5']) ? "placeholder='".$_SESSION['erreur']['5']."'" : "" ?> > 
+        
+        <label for="picture">Photo de profil</label>
+        <input type="hidden" name="MAX_FILE_SIZE" value="60000" />
+        <input type="hidden" name="id" value="<?=$id?>">
+        <input type="file" id="picture" name="picture" required selected>
+            <!-- <?php echo isset($_SESSION['erreur']['6']) ? "placeholder='".$_SESSION['erreur']['6']."'" : "" ?> -->
+
+        <input type="submit" value="Envoyer">

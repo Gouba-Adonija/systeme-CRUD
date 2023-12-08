@@ -28,9 +28,10 @@ td{
 }
 
 a{
+    font-family: 'Times New Roman', Times, serif;
     display: inline;
     text-decoration: none;
-    background-color: green;
+    background-color: rgb(27, 163, 27);
     color: white;
     padding: 4px;
 }
@@ -46,11 +47,31 @@ td > a{
     top: 5px;
 }
 
-input[type='search']{
+input{
+    padding: 6px 8px;
+    margin: 1px 0px;
+}
+input:hover{
+    cursor: pointer;
+    box-shadow: 1px 1px 4px 2px black;
+}
+
+input[value='Supprimer']{
+    background-color: rgb(252, 11, 11);
     border: none;
-    border-radius: 10px;
-    height: 35px;
-    width: 500px;
+    color: azure;
+}
+
+input[value='Modifier']{
+    background-color: rgb(83, 11, 252);
+    border: none;
+    color: azure;
+}
+
+input[value='Voir']{
+    background-color: rgb(23, 195, 51);
+    border: none;
+    color: azure;
 }
 
 ::placeholder{

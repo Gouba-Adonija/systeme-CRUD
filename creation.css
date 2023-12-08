@@ -1,12 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('image.png');
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 h1{
     text-align: center;
     color: rgb(27, 220, 69);
 }
 
 fieldset{
-    margin: 0 auto;
+    box-shadow: 3px 3px 10px 2px black;
+    width: 600px;
+    margin: 10px auto;
     background-color: #eee;
     text-align: center;
+    padding-bottom: 3%;
 }
 .contain{
     width: 800px;
@@ -15,6 +30,7 @@ fieldset{
 }
 
 input{
+    border: 1px solid black;
     width: 75%;
     display: block;
     margin: 3px auto;
@@ -39,7 +55,7 @@ input[type='radio']:hover{
 }
 ::placeholder{
     font-size: 15px;
-    color: black;
+    color: red;
 }
 
 input:hover{
@@ -48,10 +64,12 @@ input:hover{
 }
 
 input[type='submit']{
+    font-family: Arial ,sans-serif;
+    font-size: 15px;
     width: 203px;
     background-color: #ede509df;
     padding: 1px;
-    margin-top: 20px;
+    margin-top: 25px;
     transition: all 0.2s;
 }
 
@@ -64,6 +82,11 @@ input[type='submit']:hover{
 }
 
 label{
-    color: blueviolet;
+    display: flex;
+    font-family: Arial ,sans-serif;
+    position: relative;
+    left: 14%;
+    color: blue;
     font-size: 17px;
+    margin: 8px;
 }

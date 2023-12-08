@@ -36,11 +36,11 @@ $datas=json_decode($datas);
             <td><?=$data -> phone?></td>
             <td class='web'><a href="<?=$data -> website?>"><?=$data -> website?></a></td>
             <td>
-                <form action='model\action_json.php' method='Post'>
-                <input type='hidden' name='id' value='<?=$data -> id?>'>
-                <input type='submit' name='action' value='View'>
-                <input type='submit' name='action' value='Update'>
-                <input type='submit' name='action' value='Delete'>
+                <form action="model\action_json.php" method="post" >
+                    <input type="submit" name="action" value="Voir">
+                    <input type="submit" name="action" value="Modifier">
+                    <input type="submit" name="action" value="Supprimer">
+                    <input type="hidden" name="id" value="<?=$data -> id?>">    
                 </form>
             </td>   
         </tr>
@@ -67,11 +67,11 @@ $datas=json_decode($datas);
         <td><?=$phone ?></td>
         <td class="web"><a href="<?=$site ?>"><?=$site ?></a></td>
         <td>
-            <form action='model\action_json.php' method='Post'>
-                <input type='hidden' name='numero' value='<?=$ident ?>'>
-                <input type='submit' name='action' value='View'>
-                <input type='submit' name='action' value='Update'>
-                <input type='submit' name='action' value='Delete'>
+            <form action="model\action_json.php" method="post" >
+                <input type="submit" name="action" value="Voir">
+                <input type="submit" name="action" value="Modifier">
+                <input type="submit" name="action" value="Supprimer">
+                <input type="hidden" name="numero" value="<?=$ident ?>">
             </form>
         </td>
         

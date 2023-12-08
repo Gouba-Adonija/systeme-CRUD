@@ -11,7 +11,7 @@ function getConnBd(){
         return $conn;
     
     } catch(PDOException $e){
-    echo "Erreur :".$e -> getmessage();
+    echo "Erreur de connexio à l base de donnée:".$e -> getmessage();
     }
 }
 
