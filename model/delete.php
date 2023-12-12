@@ -15,8 +15,7 @@ foreach ($datas as $key => $class) {
 $encod=json_encode($new_datas,JSON_PRETTY_PRINT);
 $op=file_put_contents($file,$encod);
 if(!$op){
-    echo '<center style="color:red"> <h1>Supression non éfffectuée </h1></center>';
+    die('<center style="color:red"> <h1>Supression non éfffectuée </h1></center>');
 }
 header('location:..\index.php')
-
 ?>

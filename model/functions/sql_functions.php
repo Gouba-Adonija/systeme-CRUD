@@ -56,26 +56,25 @@ function ReadUser($id){
     return $result[0];
 }
 
-function UpdateUser($nom, $pren, $email, $site,$tel ,$id){
+function UpdateUser($nom, $pren, $email, $site, $pict, $tel ,$id){
     try{
         $conn = getConnBd();
         $conn->beginTransaction();
-        $sql="UPDATE users SET nom = :nom, alias = : alias, email = :email,
-        phone = :phone, sit = :sit, img = :img WHERE id_u=$id";
+        $sql="UPDATE users SET nom = :nom, alias = :alias, email = :email, phone = :phone, sit = :sit, img = :img WHERE id_u = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':nom',$nom);
         $stmt->bindParam(':alias',$pren);
         $stmt->bindParam(':email',$email);
         $stmt->bindParam(':phone',$tel);
         $stmt->bindParam(':sit',$site);
-
+        $stmt->bindParam(':img',$pict);
+        $stmt->bindParam(':id',$id);
         $test = $stmt->execute();
         $conn->commit();
-    
+        
         return true;
     }catch(PDOException $e){
         return $conn->rollBack();
-        exit;
     } 
 }
 
@@ -91,8 +90,7 @@ function DeleteUser($id){
 
         return true;
     }catch( PDOException $e){
-        $conn->rollBack();
-        exit;
+        return $conn->rollBack();
     }
     
 }

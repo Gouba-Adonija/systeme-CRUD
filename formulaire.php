@@ -1,6 +1,6 @@
 <label for="name">Nom</label>
 <input type="text" id="name" name="name" style="text-transform:uppercase" maxlength="10"
-    <?php echo !empty($nom) ? "value='".$nom."'" : "" ?>
+    <?php echo ( !isset($_SESSION['erreur']['1']) && !empty($nom)) ? "value='".$nom."'" : "" ?>
     <?php echo isset($_SESSION['erreur']['1']) ? "placeholder='".$_SESSION['erreur']['1']."'" : "" ?> required>
 
 <label for="Surname">Prénom</label>
@@ -10,12 +10,12 @@
 
 <label for="email">Email</label>
 <input type="email" id="email" name="email" 
-    <?php echo !empty($email) ? "value='".$email."'" : "" ?>
+    <?php echo ( !isset($_SESSION['erreur']['3']) && !empty($email)) ? "value='".$email."'" : "" ?>
     <?php echo isset($_SESSION['erreur']['3']) ? "placeholder='".$_SESSION['erreur']['3']."'" : "" ?> required>
 
 <label for="site">Votre site</label>
 <input type="url" id="site" name="site" 
-    <?php echo !empty($site) ? "value='".$site."'" : "" ?>
+    <?php echo ( !isset($_SESSION['erreur']['4']) && !empty($site)) ? "value='".$site."'" : "" ?>
     <?php echo isset($_SESSION['erreur']['4']) ? "placeholder='".$_SESSION['erreur']['4']."'" : "" ?> required >
 
 <label for="phone">Télephone</label>

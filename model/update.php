@@ -4,9 +4,7 @@ $file='user_data.json';
 if(!empty($_POST['name'])){
     require '..\control\valid_data.php';
 
-    var_dump($_SESSION);
     if (empty($_SESSION['erreur'])){
-
         $op = json_decode(file_get_contents($file));
         foreach ($op as $key => $value) {
             if($id == $value-> id){
@@ -35,11 +33,14 @@ if(!empty($_POST['name'])){
         
         $encod=json_encode($new_datas,JSON_PRETTY_PRINT);
         $op=file_put_contents($file,$encod);
+        unset($_SESSION);
         if(!$op){
             echo '<center style="color:red"> <h1>Modification non éfffectuée </h1></center>';
             exit;
         }
         header('Location:..\index.php');
+    }else{
+        unset($action);
     }
 }
 if(isset($action)){
@@ -69,4 +70,3 @@ if(isset($action)){
     </form>
 </fieldset>
 <?php    
-echo 'voici :';

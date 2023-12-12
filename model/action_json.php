@@ -1,10 +1,13 @@
 <?php
-session_start(); 
+session_start();
+if(session_status() != 'PHP_SESSION_DISABLED'){
+    unset($_SESSION['id']);
+}
 if(isset($_POST['action'])){
     $_SESSION['action'] = $_POST['action'];
     if(isset($_POST['id'])){
         $_SESSION['id'] = $_POST['id'];
-
+        
     }else{
         $_SESSION['numero'] = $_POST['numero'];
     }
@@ -23,7 +26,6 @@ if(isset($_SESSION['id'])){
     
     } elseif($action == 'Supprimer'){
         require 'delete.php';
-        @include('..\index.php');
         exit;
     
     }
@@ -91,12 +93,12 @@ if(isset($_SESSION['id'])){
     }elseif($action == 'Supprimer'){
         require 'functions\sql_functions.php';
         $tb = DeleteUser($ident);
-
-        if(!$tb == true){
+        
+        if(!($tb == true)){
             die('ERROR : votre action n\'est pas définie');
         }
         header('Location:..\index.php');
     }
 }else{
-    echo 'c est  quoi encore';
+    echo 'ERREUR: veuillez redefnir votre action';
 }

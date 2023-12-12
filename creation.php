@@ -4,9 +4,10 @@ if(session_status() == 'PHP_SESSION_ACTIVE'){
 }
 if(!empty($_POST)){
     require 'control\valid_data.php';
-    if (empty($_SESSION['erreur'])){
+    if(empty($_SESSION['erreur'])){
         require 'model\save_user.php';
     }
+    var_dump($_SESSION);
 }
 require 'model\functions\functions.php';
     $restrict = date_permit(18);

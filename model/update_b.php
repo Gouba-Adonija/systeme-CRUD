@@ -1,22 +1,16 @@
 <?php
+echo 'modif';
 if(!empty($_POST['name'])){
     unset($action);
     require '..\control\valid_data.php';
     if (empty($_SESSION['erreur'])){
         require 'functions\sql_functions.php';
-        $new_user=[
-            'nom' => $nom,
-            'alias' => $pren,
-            'email' => $email,
-            'phone' => $tel,
-            'sit' => $site,
-            'img' => $pict
-        ];
-        UpdateUser($nom, $pren, $email, $site,$tel ,$ident);
-        var_dump($new_user);
-        unset($_SESSION);
         
+        $exec = UpdateUser($nom, $pren, $email, $site, $pict, $tel ,$ident);
+        unset($_SESSION);
+    
         header('Location:..\index.php');  
+        exit();
     }
 }
 if(isset($action)){
@@ -37,7 +31,7 @@ if(isset($action)){
 <link rel="stylesheet" href="..\creation.css">
 <fieldset>
     <h1>Page de Modification</h1>
-    <form enctype="multipart/form-data" method="post" action="">
+    <form enctype="multipart/form-data" method="post">
         <?php require '..\formulaire.php' ?>
     </form> 
 </fieldset>
