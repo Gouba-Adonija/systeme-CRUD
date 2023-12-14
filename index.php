@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(session_status() !== 'PHP_SESSION_DISABLED'){
+    session_destroy();
+}
+
 require 'model\functions\sql_functions.php';
 $file='model\user_data.json';
 $datas=file_get_contents($file);

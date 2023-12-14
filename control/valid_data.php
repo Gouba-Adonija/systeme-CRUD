@@ -4,17 +4,7 @@ if(session_status() == 'PHP_SESSION_DISABLED'){
 }
 $obt = 0;
 $_SESSION['erreur'] = [];
-if(!empty($_GET)){
-    $obt = 1;
-    $nom=strip_tags(htmlspecialchars(strtoupper($_GET['name'])));
-    $pren=strip_tags(htmlspecialchars(ucfirst($_GET['surname'])));
-    $email=strip_tags(htmlspecialchars($_GET['email']));
-    $tel=strip_tags(htmlspecialchars(strval($_GET['tel'])));
-    $site=strip_tags(htmlspecialchars($_GET['site']));
-    if(isset($_GET['id'])){
-        $id=strip_tags(htmlspecialchars($_GET['site']));
-    }
-}elseif(!empty($_POST)){
+if(!empty($_POST)){
     $obt = 1;
     $nom=strip_tags(htmlspecialchars(strtoupper($_POST['name'])));
     $pren=strip_tags(htmlspecialchars(ucfirst($_POST['surname'])));
@@ -69,15 +59,20 @@ if($obt == 1){
     }
     
     if(isset($_FILES)){
-        if(empty($_FILES)){
-            $_SESSION['erreur'][6] = "Veuillez selectionner une image ";
-    
-        }elseif(!empty($_FILES)) {
+        if(empty($_FILES['picture']['name'])){
+            if(!isset($_POST['pict'])){
+                $_SESSION['erreur'][6] = "Veuillez selectionner une image ";
+
+            }else{
+                $pict = strip_tags(htmlspecialchars(trim($_POST['pict'])));
+            }
+        }elseif(!empty($_FILES)){
             $pict = $_FILES['picture']['name'];
-            $extens = strtolower(substr($pict, -3));
-            $extensions = ['jpg','png', 'jpeg'];
-            if(!in_array($extens, $extensions)){
-                $_SESSION['erreur'][6]= 'Votre fichier n\'est pas une image';
+            $extens = explode('.',$pict);
+            $extensions = ['jpg','png', 'jpeg','svg','png'];
+
+            if(!in_array(end($extens), $extensions)){
+                $_SESSION['erreur'][6]= "Votre fichier n'est pas une image";
                 exit;
             }
             if ($_FILES['picture']['tmp_name'] == ""){

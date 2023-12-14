@@ -90,3 +90,12 @@ label{
     font-size: 17px;
     margin: 8px;
 }
+
+.file > input[type='text']{
+    border: none;
+    background-color: transparent;
+}
+.error{
+    text-align: left;
+    color: red;
+}

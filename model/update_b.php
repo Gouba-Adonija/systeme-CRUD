@@ -1,6 +1,5 @@
 <?php
-echo 'modif';
-if(!empty($_POST['name'])){
+if(!empty($_POST['send'])){
     unset($action);
     require '..\control\valid_data.php';
     if (empty($_SESSION['erreur'])){

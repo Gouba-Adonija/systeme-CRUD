@@ -44,7 +44,7 @@ foreach($datas as $data){
             <div class="right">
                 <div class="one">
                     <p id="nom"><strong><?=$data -> name?></strong></p>
-                    <p><strong><?=$data -> name?></strong></p>
+                    <p><strong><?=$data -> username?></strong></p>
                     <p><?=$data -> email?></p>
                 </div>
                 <div class="two">

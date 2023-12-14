@@ -1,9 +1,7 @@
 <?php
 $file='user_data.json';
-
-if(!empty($_POST['name'])){
+if(!empty($_POST['send'])){
     require '..\control\valid_data.php';
-
     if (empty($_SESSION['erreur'])){
         $op = json_decode(file_get_contents($file));
         foreach ($op as $key => $value) {
@@ -39,8 +37,6 @@ if(!empty($_POST['name'])){
             exit;
         }
         header('Location:..\index.php');
-    }else{
-        unset($action);
     }
 }
 if(isset($action)){
@@ -55,6 +51,8 @@ if(isset($action)){
             $tel = $data->phone;
             if(isset($data->extension)){
                 $pict = $data->extension;   
+            }else{
+                $pict = "";
             }
         }
     }
@@ -65,7 +63,7 @@ if(isset($action)){
 <link rel="stylesheet" href="..\creation.css">
 <fieldset>
     <h1>Page de Modification</h1>
-    <form enctype="multipart/form-data" method="post" action="">
+    <form enctype="multipart/form-data" method="post">
         <?php require '..\formulaire.php'  ?>
     </form>
 </fieldset>

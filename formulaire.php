@@ -23,9 +23,19 @@
     <?php echo ( !isset($_SESSION['erreur']['5']) && !empty($tel)) ? "value='".$tel."'" : "" ?>
     <?php echo isset($_SESSION['erreur']['5']) ? "placeholder='".$_SESSION['erreur']['5']."'" : "" ?> required>
 
-<label for="picture">Rajouter une photo de profil</label>
-<input type="hidden" name="MAX_FILE_SIZE" value="60000" />
-<input type="file" id="picture" name="picture" required>
+<div class="box">
+    <div class="file">
+        <label for="picture">Rajouter une photo de profil</label>
+        <input type="hidden" name="MAX_FILE_SIZE" value="60000" /> 
+        <input type="file" id="picture" name="picture">              
+    </div>
+    <div class="img">
+        <img src="<?= "images\\".$pict?>" alt="" width="80px">
+    </div>
+    <input type="hidden" id="picture" name="pict" value="
+        <?php echo (!isset($_SESSION['erreur']['6']) && !empty($pict)) ? $pict : "" ?>">
+        <?php echo isset($_SESSION['erreur']['6']) ? "<p>".$_SESSION['erreur']['6']."</p>" : "" ?>
+</div>
 
 <input type="submit" name='send' value="Envoyer">
 

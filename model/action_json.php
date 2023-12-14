@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(session_status() != 'PHP_SESSION_DISABLED'){
-    unset($_SESSION['id']);
+if(session_status() !== 'PHP_SESSION_DISABLED'){
+    var_dump($_SESSION);
 }
 if(isset($_POST['action'])){
     $_SESSION['action'] = $_POST['action'];

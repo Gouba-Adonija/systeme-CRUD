@@ -77,3 +77,6 @@ input[value='Voir']{
 ::placeholder{
     padding-left:20px;
 }
+.box{
+    display: flex;
+}
